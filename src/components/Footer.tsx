@@ -67,9 +67,9 @@ export default function Footer() {
           <div>
             <div className="text-[10px] md:text-xs tracking-wider uppercase font-semibold mb-4" style={{ color: 'var(--text-muted)' }}>Follow Me</div>
             <div className="flex gap-3 md:gap-4">
-              {['linkedin', 'twitter', 'youtube', 'instagram'].map((s) => (
+              {(['linkedin', 'twitter', 'youtube', 'instagram'] as const).map((s) => (
                 <a key={s} href="#" className="w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all bg-[var(--bg-card)] border border-[var(--border)] text-[var(--text-muted)] hover:!text-[var(--accent)] hover:!bg-teal-500/10 hover:!border-teal-500/40">
-                  <SocialIcon name={s} className="w-[18px] h-[18px] md:w-5 md:h-5" />
+                  <SocialIcon platform={s} className="w-[18px] h-[18px] md:w-5 md:h-5" />
                 </a>
               ))}
             </div>
