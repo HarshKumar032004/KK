@@ -4,18 +4,11 @@ import { motion } from 'framer-motion';
 
 const programs = [
   {
-    icon: BookOpen,
-    title: 'IAS & Civil Services Coaching',
-    desc: 'Personalized guidance from a former IAS officer — strategy, interview prep, and the mindset required to serve India.',
-    tag: 'Most Popular',
-    tagColor: 'teal',
-  },
-  {
     icon: Lightbulb,
     title: 'Leadership Mentorship',
     desc: 'One-on-one sessions for corporate leaders, startup founders, and public sector professionals seeking clarity.',
-    tag: null,
-    tagColor: null,
+    tag: 'Most Popular',
+    tagColor: 'teal',
   },
   {
     icon: Briefcase,
@@ -28,20 +21,6 @@ const programs = [
     icon: Heart,
     title: 'Wellness & Mindset Programs',
     desc: 'Holistic workshops combining governance discipline with modern wellness principles for sustained peak performance.',
-    tag: null,
-    tagColor: null,
-  },
-  {
-    icon: Mic,
-    title: 'Public Speaking Masterclass',
-    desc: 'Learn authoritative communication from someone who addressed UN assemblies and parliamentary sessions.',
-    tag: null,
-    tagColor: null,
-  },
-  {
-    icon: Globe2,
-    title: 'Policy & Governance Advisory',
-    desc: 'Consulting for state governments, NGOs, and international bodies on governance, rural development, and welfare.',
     tag: null,
     tagColor: null,
   },
@@ -70,7 +49,7 @@ export default function Programs() {
           <div className="section-tag justify-center">What I Offer</div>
           <h2 className="section-title mb-4">Programs &amp; Services</h2>
           <p className="max-w-2xl mx-auto px-4" style={{ color: 'var(--text-secondary)', fontSize: '1.02rem' }}>
-            Drawing from 32+ years across administration, policy, and leadership — designed to create lasting impact.
+            Drawing from 30+ years across administration, policy, and leadership — designed to create lasting impact.
           </p>
         </motion.div>
 

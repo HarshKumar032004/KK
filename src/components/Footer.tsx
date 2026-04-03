@@ -1,11 +1,69 @@
 'use client';
 import { useState } from 'react';
+import Link from 'next/link';
 import { Mail, Phone, MapPin, ArrowRight } from 'lucide-react';
 import { SocialIcon } from './SocialIcons';
 import { motion } from 'framer-motion';
+import toast from 'react-hot-toast';
 
 export default function Footer() {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // Strict frontend email validation
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
+      toast.error('Please enter a valid email address.');
+      return;
+    }
+
+    // Frontend rate limiting (1 minute cooldown)
+    if (typeof window !== 'undefined') {
+      const lastSubmit = localStorage.getItem('lastFormSubmit');
+      if (lastSubmit && Date.now() - parseInt(lastSubmit) < 60000) {
+        toast.error('Please wait 60 seconds before sending another message to prevent spam.');
+        return;
+      }
+    }
+
+    setSending(true);
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/contact.kk@gmail.com', {
+        method: 'POST',
+        headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          message: form.message,
+          _subject: 'New Message from KK Singh Portfolio'
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error(`Request failed with status ${response.status}`);
+      }
+      
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('lastFormSubmit', Date.now().toString());
+      }
+
+      setSent(true);
+      setTimeout(() => setSent(false), 3000);
+      setForm({ name: '', email: '', message: '' });
+      toast.success("Message sent successfully! We'll get back to you soon.");
+    } catch (error) {
+      console.error(error);
+      toast.error('Failed to send message. Please try again later.');
+    } finally {
+      setSending(false);
+    }
+  };
 
   return (
     <footer id="contact" className="relative border-t" style={{ background: '#020617', borderColor: 'var(--border)' }}>
@@ -41,7 +99,7 @@ export default function Footer() {
               </div>
               <div>
                 <div className="text-[10px] md:text-xs tracking-wider uppercase font-semibold" style={{ color: 'var(--text-muted)' }}>Email</div>
-                <div className="text-sm md:text-base font-medium text-white">contact@kksingh.in</div>
+                <div className="text-sm md:text-base font-medium text-white">contact.kk@gmail.com</div>
               </div>
             </div>
             <div className="flex items-center gap-4">
@@ -50,7 +108,7 @@ export default function Footer() {
               </div>
               <div>
                 <div className="text-[10px] md:text-xs tracking-wider uppercase font-semibold" style={{ color: 'var(--text-muted)' }}>Phone</div>
-                <div className="text-sm md:text-base font-medium text-white">+91 98765 43210</div>
+                <div className="text-sm md:text-base font-medium text-white">+91 82355 14356</div>
               </div>
             </div>
             <div className="flex items-center gap-4">
@@ -59,7 +117,7 @@ export default function Footer() {
               </div>
               <div>
                 <div className="text-[10px] md:text-xs tracking-wider uppercase font-semibold" style={{ color: 'var(--text-muted)' }}>Location</div>
-                <div className="text-sm md:text-base font-medium text-white">New Delhi, India</div>
+                <div className="text-sm md:text-base font-medium text-white">Ranchi, Jharkhand, India</div>
               </div>
             </div>
           </div>
@@ -85,17 +143,21 @@ export default function Footer() {
           className="card-dark rounded-2xl p-6 md:p-8 lg:p-10 border border-[var(--border)]"
         >
           <h3 className="text-2xl font-bold mb-6 md:mb-8 text-white" style={{ fontFamily: 'Playfair Display, serif' }}>Send a Message</h3>
-          <form className="space-y-4 md:space-y-5" onSubmit={e => e.preventDefault()}>
+          <form className="space-y-4 md:space-y-5" onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5">
               <div className="space-y-1.5 md:space-y-2">
                 <label className="text-[10px] md:text-xs font-semibold px-1" style={{ color: 'var(--text-muted)' }}>FULL NAME</label>
                 <input type="text" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })}
+                  maxLength={50}
+                  required
                   className="w-full bg-[var(--bg-surface)] border border-[var(--border)] rounded-lg px-4 py-3 text-sm text-white outline-none focus:border-[var(--accent)] focus:ring-1 focus:ring-[var(--accent)] transition-all"
                   placeholder="John Doe" />
               </div>
               <div className="space-y-1.5 md:space-y-2">
                 <label className="text-[10px] md:text-xs font-semibold px-1" style={{ color: 'var(--text-muted)' }}>EMAIL ADDRESS</label>
                 <input type="email" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })}
+                  maxLength={100}
+                  required
                   className="w-full bg-[var(--bg-surface)] border border-[var(--border)] rounded-lg px-4 py-3 text-sm text-white outline-none focus:border-[var(--accent)] focus:ring-1 focus:ring-[var(--accent)] transition-all"
                   placeholder="john@company.com" />
               </div>
@@ -103,11 +165,13 @@ export default function Footer() {
             <div className="space-y-1.5 md:space-y-2">
               <label className="text-[10px] md:text-xs font-semibold px-1" style={{ color: 'var(--text-muted)' }}>MESSAGE</label>
               <textarea value={form.message} onChange={e => setForm({ ...form, message: e.target.value })} rows={4}
+                maxLength={500}
+                required
                 className="w-full bg-[var(--bg-surface)] border border-[var(--border)] rounded-lg px-4 py-3 text-sm text-white outline-none focus:border-[var(--accent)] focus:ring-1 focus:ring-[var(--accent)] transition-all resize-none"
                 placeholder="How can I help you?" />
             </div>
-            <button className="w-full btn-primary justify-center mt-2 group" style={{ paddingTop: '14px', paddingBottom: '14px' }}>
-              Send Message <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+            <button disabled={sending || sent} type="submit" className="w-full btn-primary justify-center mt-2 group disabled:cursor-not-allowed" style={{ paddingTop: '14px', paddingBottom: '14px', opacity: sending ? 0.7 : 1 }}>
+              {sent ? 'Message Sent Successfully!' : sending ? 'Sending...' : <>Send Message <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" /></>}
             </button>
           </form>
         </motion.div>
@@ -115,16 +179,20 @@ export default function Footer() {
       </div>
 
       {/* Copyright Bar */}
-      <div className="border-t" style={{ borderColor: 'var(--border)' }}>
+      <div className="border-t relative z-10" style={{ borderColor: 'var(--border)' }}>
         <div className="max-w-7xl mx-auto px-6 py-6 md:py-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="text-xs text-center md:text-left" style={{ color: 'var(--text-muted)' }}>
             &copy; {new Date().getFullYear()} KK Singh. All rights reserved.
           </div>
           <div className="flex gap-4 md:gap-6 text-xs text-center md:text-left flex-wrap justify-center">
-            {['Privacy Policy', 'Terms of Service', 'Cookie Policy'].map(l => (
-              <a key={l} href="#" className="hover:!text-[var(--accent)] transition-colors" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>
-                {l}
-              </a>
+            {[
+              { name: 'Privacy Policy', href: '/privacy' },
+              { name: 'Terms of Service', href: '/terms' },
+              { name: 'Cookie Policy', href: '/cookies' }
+            ].map(l => (
+              <Link key={l.name} href={l.href} className="hover:!text-[var(--accent)] transition-colors" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>
+                {l.name}
+              </Link>
             ))}
           </div>
         </div>

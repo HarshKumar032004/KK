@@ -2,16 +2,50 @@
 import { useState } from 'react';
 import { Send } from 'lucide-react';
 import { motion } from 'framer-motion';
+import toast from 'react-hot-toast';
 
 export default function QuickContact() {
   const [form, setForm] = useState({ name: '', phone: '' });
   const [sent, setSent] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSent(true);
-    setTimeout(() => setSent(false), 3000);
-    setForm({ name: '', phone: '' });
+
+    // Frontend rate limiting (1 minute cooldown)
+    if (typeof window !== 'undefined') {
+      const lastSubmit = localStorage.getItem('lastFormSubmit');
+      if (lastSubmit && Date.now() - parseInt(lastSubmit) < 60000) {
+        toast.error("Please wait a minute before connecting again to prevent spam.");
+        return;
+      }
+    }
+
+    try {
+      await fetch("https://formsubmit.co/ajax/contact.kk@gmail.com", {
+        method: "POST",
+        headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: form.name,
+          phone: form.phone,
+          _subject: "New Quick Connect Lead from KK Singh Portfolio"
+        })
+      });
+      
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('lastFormSubmit', Date.now().toString());
+      }
+
+      toast.success("Details sent successfully! We'll reach out soon.");
+      setSent(true);
+      setTimeout(() => setSent(false), 3000);
+      setForm({ name: '', phone: '' });
+    } catch (error) {
+      console.error(error);
+      toast.error("Failed to send details. Please try again later.");
+    }
   };
 
   return (
@@ -46,15 +80,21 @@ export default function QuickContact() {
               value={form.name}
               onChange={e => setForm({ ...form, name: e.target.value })}
               required
+              maxLength={50}
               className="px-5 py-3.5 md:py-3 rounded md:rounded-lg text-sm md:text-base outline-none w-full sm:w-48 lg:w-56 transition-all focus:ring-2 focus:ring-white/50"
               style={{ background: 'rgba(255,255,255,0.15)', border: '1px solid rgba(255,255,255,0.3)', color: 'white' }}
             />
             <input
               type="tel"
-              placeholder="Phone Number"
+              placeholder="Phone Number (e.g. +91...)"
               value={form.phone}
-              onChange={e => setForm({ ...form, phone: e.target.value })}
+              onChange={e => {
+                // Strictly allow only numbers and a plus sign
+                const val = e.target.value.replace(/[^0-9+]/g, '');
+                setForm({ ...form, phone: val });
+              }}
               required
+              maxLength={15}
               className="px-5 py-3.5 md:py-3 rounded md:rounded-lg text-sm md:text-base outline-none w-full sm:w-48 lg:w-56 transition-all focus:ring-2 focus:ring-white/50"
               style={{ background: 'rgba(255,255,255,0.15)', border: '1px solid rgba(255,255,255,0.3)', color: 'white' }}
             />
