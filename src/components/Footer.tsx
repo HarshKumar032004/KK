@@ -31,7 +31,7 @@ export default function Footer() {
 
     setSending(true);
     try {
-      const response = await fetch('https://formsubmit.co/ajax/contact.kk@gmail.com', {
+      const response = await fetch('https://formsubmit.co/ajax/contact.iaskk@gmail.com', {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',
@@ -99,7 +99,7 @@ export default function Footer() {
               </div>
               <div>
                 <div className="text-[10px] md:text-xs tracking-wider uppercase font-semibold" style={{ color: 'var(--text-muted)' }}>Email</div>
-                <div className="text-sm md:text-base font-medium text-white">contact.kk@gmail.com</div>
+                <div className="text-sm md:text-base font-medium text-white">contact.iaskk@gmail.com</div>
               </div>
             </div>
             <div className="flex items-center gap-4">
