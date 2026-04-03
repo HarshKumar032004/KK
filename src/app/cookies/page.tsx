@@ -41,7 +41,7 @@ export default function CookiePolicy() {
 
           <h2 className="text-2xl font-bold text-white mt-10 mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>5. Contact Us</h2>
           <p>
-            If you have questions or comments regarding this Cookie Policy, you may email us at contact.kk@gmail.com.
+            If you have questions or comments regarding this Cookie Policy, you may email us at contact.iaskk@gmail.com.
           </p>
         </div>
       </div>

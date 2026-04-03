@@ -21,7 +21,7 @@ export default function QuickContact() {
     }
 
     try {
-      await fetch("https://formsubmit.co/ajax/contact.kk@gmail.com", {
+      await fetch("https://formsubmit.co/ajax/contact.iaskk@gmail.com", {
         method: "POST",
         headers: { 
           'Content-Type': 'application/json',
