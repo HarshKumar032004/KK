@@ -12,9 +12,6 @@ const mediaItems = [
   { title: 'Leadership in the Age of Disruption', source: 'Leadership Summit', type: 'placeholder' },
   { title: 'Public Service & Beyond', source: 'Conclave', type: 'placeholder' },
 ];
-
-const featuredIn = ['NDTV', 'India Today', 'The Hindu', 'Economic Times', 'Aaj Tak', 'Rajya Sabha TV'];
-
 export default function Media() {
   return (
     <section id="media" className="py-16 md:py-28 relative" style={{ background: 'var(--bg-surface)' }}>
@@ -115,27 +112,6 @@ export default function Media() {
             </motion.div>
           ))}
         </div>
-
-        {/* As featured in */}
-        <motion.div 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1 }}
-          className="text-center"
-        >
-          <div className="text-[10px] md:text-xs uppercase tracking-widest mb-6 font-semibold" style={{ color: 'var(--text-muted)' }}>As featured in</div>
-          <div className="flex flex-wrap justify-center gap-3 md:gap-6">
-            {featuredIn.map((name, i) => (
-              <div key={i} className="px-4 md:px-6 py-2 md:py-3 rounded-lg font-bold text-xs md:text-sm transition-all duration-300 hover:-translate-y-1"
-                style={{ background: 'var(--bg-card)', color: 'var(--text-muted)', border: '1px solid var(--border)' }}
-                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = 'var(--accent)'; (e.currentTarget as HTMLElement).style.borderColor = 'rgba(20,184,166,0.4)'; }}
-                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = 'var(--text-muted)'; (e.currentTarget as HTMLElement).style.borderColor = 'var(--border)'; }}>
-                {name}
-              </div>
-            ))}
-          </div>
-        </motion.div>
       </div>
     </section>
   );

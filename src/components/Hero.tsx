@@ -4,13 +4,6 @@ import Image from 'next/image';
 import { ArrowRight, Play, Award, Users, MapPin, Mic2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-const stats = [
-  { value: '32+', label: 'Years in IAS', icon: Award },
-  { value: '5,000+', label: 'Lives Mentored', icon: Users },
-  { value: '18', label: 'States Served', icon: MapPin },
-  { value: '300+', label: 'Talks Delivered', icon: Mic2 },
-];
-
 export default function Hero() {
   return (
     <section id="home" className="relative min-h-screen flex flex-col justify-center overflow-hidden pt-24 pb-32 md:pb-0 md:pt-0">
@@ -53,7 +46,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="mb-8 leading-relaxed max-w-lg mx-auto md:mx-0" style={{ color: 'var(--text-secondary)', fontSize: '1.05rem' }}
           >
-            With over three decades in the Indian Administrative Service,{' '}
+            With over three decades in the Administrative Service,{' '}
             <strong style={{ color: 'var(--text-primary)' }}>KK Singh</strong> now dedicates his expertise to mentoring the next generation of leaders, entrepreneurs, and changemakers.
           </motion.p>
 
@@ -79,10 +72,10 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.8 }}
             className="glass rounded-xl p-4 inline-flex items-center gap-3"
           >
-            <div className="flex" style={{ gap: -8 }}>
+            <div className="flex -space-x-2">
               {['R', 'A', 'S'].map((l, i) => (
                 <div key={i} className="w-9 h-9 rounded-full border-2 flex items-center justify-center text-sm font-bold text-white relative z-10"
-                  style={{ background: `hsl(${170 + i * 25}, 55%, 35%)`, borderColor: 'var(--bg-card)', marginLeft: i > 0 ? -8 : 0 }}>
+                  style={{ background: `hsl(${170 + i * 25}, 55%, 35%)`, borderColor: 'var(--bg-card)' }}>
                   {l}
                 </div>
               ))}
@@ -101,7 +94,7 @@ export default function Hero() {
           transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
           className="order-1 md:order-2 flex justify-center mt-6 md:mt-0"
         >
-          <div className="relative w-full max-w-[280px] md:max-w-[360px] aspect-[3/4]">
+          <div className="relative w-full max-w-[300px] md:max-w-[420px] aspect-[5/4] md:aspect-[4/3]">
             <div className="absolute -inset-4 md:-inset-5 rounded-2xl" style={{ border: '1px solid rgba(20,184,166,0.15)' }} />
             <div className="absolute -inset-8 md:-inset-10 rounded-3xl" style={{ border: '1px solid rgba(20,184,166,0.07)' }} />
             <div className="w-full h-full rounded-2xl overflow-hidden relative"
@@ -119,15 +112,15 @@ export default function Hero() {
             <motion.div 
               animate={{ y: [0, -8, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -left-4 md:-left-8 top-1/4 glass rounded-xl px-3 md:px-4 py-2 md:py-3 z-10"
+              className="absolute -left-2 md:-left-6 bottom-4 md:bottom-10 glass rounded-xl px-3 md:px-4 py-2 md:py-3 z-10"
             >
-              <div className="text-xl md:text-2xl font-bold" style={{ fontFamily: 'Playfair Display, serif', color: 'var(--accent-light)' }}>32+</div>
-              <div className="text-[10px] md:text-xs" style={{ color: 'var(--text-muted)' }}>Years IAS</div>
+              <div className="text-xl md:text-2xl font-bold" style={{ fontFamily: 'Playfair Display, serif', color: 'var(--accent-light)' }}>30+</div>
+              <div className="text-[10px] md:text-xs" style={{ color: 'var(--text-muted)' }}>Years in Service</div>
             </motion.div>
             <motion.div 
               animate={{ y: [0, -8, 0] }}
               transition={{ duration: 4.5, delay: 1, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -right-4 md:-right-8 bottom-1/3 glass rounded-xl px-3 md:px-4 py-2 md:py-3 z-10"
+              className="absolute -right-2 md:-right-6 top-4 md:top-8 glass rounded-xl px-3 md:px-4 py-2 md:py-3 z-10"
             >
               <div className="text-xl md:text-2xl font-bold" style={{ fontFamily: 'Playfair Display, serif', color: 'var(--gold)' }}>5K+</div>
               <div className="text-[10px] md:text-xs" style={{ color: 'var(--text-muted)' }}>Mentored</div>
@@ -136,29 +129,6 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Stats bar - relative on mobile, absolute on desktop */}
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 1 }}
-        className="w-full relative md:absolute bottom-0 left-0 right-0 glass border-t mt-12 md:mt-0 z-20" 
-        style={{ borderColor: 'var(--border)' }}
-      >
-        <div className="max-w-7xl mx-auto px-6 py-5 grid grid-cols-2 lg:grid-cols-4 gap-6">
-          {stats.map((s, i) => (
-            <div key={i} className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded flex items-center justify-center flex-shrink-0"
-                style={{ background: 'rgba(20,184,166,0.1)', border: '1px solid rgba(20,184,166,0.2)' }}>
-                <s.icon size={18} style={{ color: 'var(--accent)' }} />
-              </div>
-              <div>
-                <div className="text-lg md:text-xl font-bold text-white leading-none mb-1" style={{ fontFamily: 'Playfair Display, serif' }}>{s.value}</div>
-                <div className="text-xs" style={{ color: 'var(--text-muted)' }}>{s.label}</div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </motion.div>
     </section>
   );
 }
