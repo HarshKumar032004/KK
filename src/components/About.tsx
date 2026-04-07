@@ -28,7 +28,7 @@ export default function About() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
           {/* Portrait placeholder */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
@@ -37,16 +37,16 @@ export default function About() {
           >
             <div className="relative w-full max-w-[280px] md:max-w-sm aspect-[3/4] rounded-2xl overflow-hidden"
               style={{ border: '1px solid rgba(20,184,166,0.2)' }}>
-              <Image 
-                src="/WhatsApp Image 2026-03-30 at 8.18.38 PM (1).jpeg" 
-                alt="KK Singh Portrait" 
-                fill 
-                style={{ objectFit: 'cover' }} 
+              <Image
+                src="/WhatsApp Image 2026-03-30 at 8.18.38 PM (1).jpeg"
+                alt="KK Singh Portrait"
+                fill
+                style={{ objectFit: 'cover' }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-60" />
             </div>
             {/* Floating award badge */}
-            <motion.div 
+            <motion.div
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
               className="absolute -bottom-4 -right-2 md:-right-4 glass rounded-xl p-3 md:p-4 text-center z-10"
@@ -58,7 +58,7 @@ export default function About() {
           </motion.div>
 
           {/* Content */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
@@ -82,7 +82,7 @@ export default function About() {
 
             <div className="space-y-3 mb-8 text-left">
               {credentials.map((c, i) => (
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -103,7 +103,7 @@ export default function About() {
 
         {/* Timeline */}
         <div className="mt-20 md:mt-32">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -111,9 +111,9 @@ export default function About() {
           >
             <div className="section-tag justify-center">Career Journey</div>
             <h2 className="section-title leading-tight mb-2 md:mb-0" style={{ fontSize: 'clamp(1.6rem,3vw,2.4rem)' }}>Milestones of a Distinguished Career</h2>
-            
+
             {/* Mobile swipe hint */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1, duration: 1 }}
@@ -135,24 +135,24 @@ export default function About() {
 
             <div className="-mx-6 px-6 md:mx-0 md:px-0 flex md:flex-wrap md:justify-center gap-4 lg:gap-6 relative z-10 overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none pb-8 md:pb-0 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
               {highlights.map((h, i) => (
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{ delay: i * 0.1, duration: 0.7, ease: "easeOut" }}
-                  key={i} 
+                  key={i}
                   className="relative group w-[82vw] sm:w-[calc(50%-8px)] md:w-[calc(33.333%-12px)] lg:w-[260px] flex-shrink-0 snap-center"
                 >
                   {/* Subtle background glow effect on hover */}
                   <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent)] to-transparent opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-2xl blur-xl" />
-                  
+
                   <div className="w-full h-full glass rounded-2xl p-6 md:p-8 min-h-[200px] md:min-h-0 md:aspect-square flex flex-col justify-center items-center text-center transition-all duration-500 hover:border-[rgba(20,184,166,0.3)] hover:shadow-[0_10px_40px_-10px_rgba(20,184,166,0.2)] hover:-translate-y-2 relative overflow-hidden"
                     style={{ border: '1px solid var(--border)' }}>
-                    
+
                     {/* Decorative glowing orb inside the card top right */}
                     <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full blur-2xl transition-all duration-700 opacity-20 group-hover:opacity-40 group-hover:scale-150"
                       style={{ background: 'var(--accent)' }} />
-                      
+
                     {/* Small grid pattern background for texture */}
                     <div className="absolute inset-0 pointer-events-none opacity-[0.02]"
                       style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,1) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,1) 1px,transparent 1px)', backgroundSize: '12px 12px' }} />
@@ -163,7 +163,7 @@ export default function About() {
                       {/* Subtle reflection under text */}
                       <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-1/2 h-px bg-gradient-to-r from-transparent via-[var(--accent)] to-transparent opacity-0 group-hover:opacity-50 transition-opacity duration-500" />
                     </div>
-                    
+
                     <div className="text-sm md:text-[15px] leading-relaxed relative z-10 transition-colors duration-300 group-hover:text-white" style={{ color: 'var(--text-secondary)' }}>
                       {h.text}
                     </div>

@@ -2,14 +2,18 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { Mail, Phone, MapPin, ArrowRight } from 'lucide-react';
-import { SocialIcon } from './SocialIcons';
+import { SocialIcon, socialLinks } from './SocialIcons';
 import { motion } from 'framer-motion';
 import toast from 'react-hot-toast';
 
 export default function Footer() {
-  const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' });
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
+  const FORMSUBMIT_ENDPOINT = 'https://formsubmit.co/ajax/contact.iaskk@gmail.com';
+  const WHATSAPP_GROUP_LINK = process.env.NEXT_PUBLIC_WHATSAPP_GROUP_LINK?.trim() || '';
+  const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.trim() || '';
+  const joinLink = WHATSAPP_GROUP_LINK || (WHATSAPP_NUMBER ? `https://wa.me/${WHATSAPP_NUMBER.replace(/\D/g, '')}` : '');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -17,6 +21,11 @@ export default function Footer() {
     // Strict frontend email validation
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
       toast.error('Please enter a valid email address.');
+      return;
+    }
+
+    if (form.phone && !/^\+?[1-9]\d{7,14}$/.test(form.phone)) {
+      toast.error('Please enter a valid phone number (e.g. +918235514356).');
       return;
     }
 
@@ -31,35 +40,48 @@ export default function Footer() {
 
     setSending(true);
     try {
-      const response = await fetch('https://formsubmit.co/ajax/contact.iaskk@gmail.com', {
+      const payload: Record<string, string> = {
+        name: form.name,
+        email: form.email,
+        phone: form.phone,
+        message: form.message,
+        source_form: 'Footer Contact',
+        _subject: 'New Message from KK Singh Portfolio',
+      };
+
+      const response = await fetch(FORMSUBMIT_ENDPOINT, {
         method: 'POST',
-        headers: { 
+        headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
-        body: JSON.stringify({
-          name: form.name,
-          email: form.email,
-          message: form.message,
-          _subject: 'New Message from KK Singh Portfolio'
-        })
+        body: JSON.stringify(payload)
       });
 
-      if (!response.ok) {
-        throw new Error(`Request failed with status ${response.status}`);
+      let result: { success?: string; message?: string } | null = null;
+      try {
+        result = await response.json();
+      } catch {
+        result = null;
       }
-      
+
+      const formSubmitSuccess = !!result && ['true', 'True', true].includes(result.success as string);
+      if (!response.ok || !formSubmitSuccess) {
+        throw new Error(result?.message || `Request failed with status ${response.status}`);
+      }
+
       if (typeof window !== 'undefined') {
         localStorage.setItem('lastFormSubmit', Date.now().toString());
       }
 
       setSent(true);
       setTimeout(() => setSent(false), 3000);
-      setForm({ name: '', email: '', message: '' });
-      toast.success("Message sent successfully! We'll get back to you soon.");
+      setForm({ name: '', email: '', phone: '', message: '' });
+      toast.success("Message sent successfully! KK Singh's team will be in touch soon.");
     } catch (error) {
       console.error(error);
-      toast.error('Failed to send message. Please try again later.');
+      const message = error instanceof Error ? error.message : 'Failed to send message. Please try again later.';
+      toast.error(message);
     } finally {
       setSending(false);
     }
@@ -72,9 +94,9 @@ export default function Footer() {
         style={{ backgroundImage: 'linear-gradient(rgba(20,184,166,1) 1px,transparent 1px),linear-gradient(90deg,rgba(20,184,166,1) 1px,transparent 1px)', backgroundSize: '64px 64px' }} />
 
       <div className="max-w-7xl mx-auto px-6 py-16 md:py-24 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 relative z-10">
-        
+
         {/* Left Side: Contact Info */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
@@ -85,7 +107,7 @@ export default function Footer() {
             KK
           </div>
           <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white" style={{ fontFamily: 'Playfair Display, serif', lineHeight: 1.1 }}>
-            Let&apos;s Build Something <br className="hidden lg:block"/>
+            Let&apos;s Build Something <br className="hidden lg:block" />
             <span style={{ color: 'var(--accent)' }}>Meaningful.</span>
           </h2>
           <p className="mb-8 md:mb-10 text-sm md:text-base leading-relaxed max-w-md" style={{ color: 'var(--text-secondary)' }}>
@@ -125,9 +147,9 @@ export default function Footer() {
           <div>
             <div className="text-[10px] md:text-xs tracking-wider uppercase font-semibold mb-4" style={{ color: 'var(--text-muted)' }}>Follow Me</div>
             <div className="flex gap-3 md:gap-4">
-              {(['linkedin', 'twitter', 'youtube', 'instagram'] as const).map((s) => (
-                <a key={s} href="#" className="w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all bg-[var(--bg-card)] border border-[var(--border)] text-[var(--text-muted)] hover:!text-[var(--accent)] hover:!bg-teal-500/10 hover:!border-teal-500/40">
-                  <SocialIcon platform={s} className="w-[18px] h-[18px] md:w-5 md:h-5" />
+              {socialLinks.map(({ platform, href }) => (
+                <a key={platform} href={href} target="_blank" rel="noopener noreferrer" className="w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all bg-[var(--bg-card)] border border-[var(--border)] text-[var(--text-muted)] hover:!text-[var(--accent)] hover:!bg-teal-500/10 hover:!border-teal-500/40">
+                  <SocialIcon platform={platform} className="w-[18px] h-[18px] md:w-5 md:h-5" />
                 </a>
               ))}
             </div>
@@ -135,7 +157,7 @@ export default function Footer() {
         </motion.div>
 
         {/* Right Side: Contact Form */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, x: 20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
@@ -163,6 +185,22 @@ export default function Footer() {
               </div>
             </div>
             <div className="space-y-1.5 md:space-y-2">
+              <label className="text-[10px] md:text-xs font-semibold px-1" style={{ color: 'var(--text-muted)' }}>WHATSAPP NUMBER</label>
+              <input
+                type="tel"
+                value={form.phone}
+                onChange={e => {
+                  const raw = e.target.value.replace(/[^0-9+]/g, '');
+                  const normalized = raw.startsWith('+') ? `+${raw.slice(1).replace(/\+/g, '')}` : raw.replace(/\+/g, '');
+                  setForm({ ...form, phone: normalized });
+                }}
+                maxLength={16}
+                required
+                className="w-full bg-[var(--bg-surface)] border border-[var(--border)] rounded-lg px-4 py-3 text-sm text-white outline-none focus:border-[var(--accent)] focus:ring-1 focus:ring-[var(--accent)] transition-all"
+                placeholder="+91XXXXXXXXXX"
+              />
+            </div>
+            <div className="space-y-1.5 md:space-y-2">
               <label className="text-[10px] md:text-xs font-semibold px-1" style={{ color: 'var(--text-muted)' }}>MESSAGE</label>
               <textarea value={form.message} onChange={e => setForm({ ...form, message: e.target.value })} rows={4}
                 maxLength={500}
@@ -173,6 +211,17 @@ export default function Footer() {
             <button disabled={sending || sent} type="submit" className="w-full btn-primary justify-center mt-2 group disabled:cursor-not-allowed" style={{ paddingTop: '14px', paddingBottom: '14px', opacity: sending ? 0.7 : 1 }}>
               {sent ? 'Message Sent Successfully!' : sending ? 'Sending...' : <>Send Message <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" /></>}
             </button>
+            {joinLink && (
+              <a
+                href={joinLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs md:text-sm font-semibold underline underline-offset-4 hover:opacity-90 transition-opacity mt-1"
+                style={{ color: 'var(--accent)' }}
+              >
+                🟢 Join our WhatsApp Group
+              </a>
+            )}
           </form>
         </motion.div>
 
