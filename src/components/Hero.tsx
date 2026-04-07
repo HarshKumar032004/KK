@@ -20,7 +20,7 @@ export default function Hero() {
 
       <div className="relative max-w-7xl mx-auto px-6 py-12 md:py-24 w-full grid md:grid-cols-2 gap-16 md:gap-12 items-center flex-1">
         {/* Left */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
@@ -30,7 +30,7 @@ export default function Hero() {
             <span style={{ width: 32, height: 1.5, background: 'var(--accent)', display: 'inline-block' }} />
             Retired IAS Officer · Mentor · Entrepreneur
           </div>
-          <motion.h1 
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
@@ -40,7 +40,7 @@ export default function Hero() {
             <span className="text-gradient-teal">Future.</span>
             <br />One Mind at a Time.
           </motion.h1>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -50,7 +50,7 @@ export default function Hero() {
             <strong style={{ color: 'var(--text-primary)' }}>KK Singh</strong> now dedicates his expertise to mentoring the next generation of leaders, entrepreneurs, and changemakers.
           </motion.p>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
@@ -66,7 +66,7 @@ export default function Hero() {
           </motion.div>
 
           {/* Social proof */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.8 }}
@@ -88,7 +88,7 @@ export default function Hero() {
         </motion.div>
 
         {/* Right — portrait placeholder */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
@@ -99,17 +99,17 @@ export default function Hero() {
             <div className="absolute -inset-8 md:-inset-10 rounded-3xl" style={{ border: '1px solid rgba(20,184,166,0.07)' }} />
             <div className="w-full h-full rounded-2xl overflow-hidden relative"
               style={{ border: '1px solid rgba(20,184,166,0.2)' }}>
-              <Image 
-                src="/WhatsApp Image 2026-03-30 at 8.15.26 PM.jpeg" 
-                alt="KK Singh" 
-                fill 
-                style={{ objectFit: 'cover' }} 
-                priority 
+              <Image
+                src="/WhatsApp Image 2026-03-30 at 8.15.26 PM.jpeg"
+                alt="KK Singh"
+                fill
+                style={{ objectFit: 'cover' }}
+                priority
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-90" />
             </div>
             {/* Floating badges */}
-            <motion.div 
+            <motion.div
               animate={{ y: [0, -8, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
               className="absolute -left-2 md:-left-6 bottom-4 md:bottom-10 glass rounded-xl px-3 md:px-4 py-2 md:py-3 z-10"
@@ -117,7 +117,7 @@ export default function Hero() {
               <div className="text-xl md:text-2xl font-bold" style={{ fontFamily: 'Playfair Display, serif', color: 'var(--accent-light)' }}>30+</div>
               <div className="text-[10px] md:text-xs" style={{ color: 'var(--text-muted)' }}>Years in Service</div>
             </motion.div>
-            <motion.div 
+            <motion.div
               animate={{ y: [0, -8, 0] }}
               transition={{ duration: 4.5, delay: 1, repeat: Infinity, ease: "easeInOut" }}
               className="absolute -right-2 md:-right-6 top-4 md:top-8 glass rounded-xl px-3 md:px-4 py-2 md:py-3 z-10"
