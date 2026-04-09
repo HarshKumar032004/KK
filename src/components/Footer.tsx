@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Mail, Phone, MapPin, ArrowRight } from 'lucide-react';
 import { SocialIcon, socialLinks } from './SocialIcons';
 import { motion } from 'framer-motion';
@@ -10,7 +11,7 @@ export default function Footer() {
   const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' });
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
-  const FORMSUBMIT_ENDPOINT = 'https://formsubmit.co/ajax/contact.iaskk@gmail.com';
+  const FORMSUBMIT_ENDPOINT = 'https://formsubmit.co/ajax/kksingh.iasofficer@gmail.com';
   const WHATSAPP_GROUP_LINK = process.env.NEXT_PUBLIC_WHATSAPP_GROUP_LINK?.trim() || '';
   const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.trim() || '';
   const joinLink = WHATSAPP_GROUP_LINK || (WHATSAPP_NUMBER ? `https://wa.me/${WHATSAPP_NUMBER.replace(/\D/g, '')}` : '');
@@ -102,9 +103,14 @@ export default function Footer() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center text-xl md:text-2xl font-bold mb-6 md:mb-8"
-            style={{ background: 'rgba(20,184,166,0.1)', border: '2px solid rgba(20,184,166,0.3)', fontFamily: 'Playfair Display, serif', color: '#5eead4' }}>
-            KK
+          <div className="w-12 h-12 md:w-16 md:h-16 rounded-full overflow-hidden flex items-center justify-center mb-6 md:mb-8 bg-transparent">
+            <Image
+              src="/KK Singh Growth Logo.png"
+              alt="KK Singh Logo"
+              width={64}
+              height={64}
+              className="w-full h-full object-contain"
+            />
           </div>
           <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white" style={{ fontFamily: 'Playfair Display, serif', lineHeight: 1.1 }}>
             Let&apos;s Build Something <br className="hidden lg:block" />
@@ -121,7 +127,7 @@ export default function Footer() {
               </div>
               <div>
                 <div className="text-[10px] md:text-xs tracking-wider uppercase font-semibold" style={{ color: 'var(--text-muted)' }}>Email</div>
-                <div className="text-sm md:text-base font-medium text-white">contact.iaskk@gmail.com</div>
+                <div className="text-sm md:text-base font-medium text-white">kksingh.iasofficer@gmail.com</div>
               </div>
             </div>
             <div className="flex items-center gap-4">

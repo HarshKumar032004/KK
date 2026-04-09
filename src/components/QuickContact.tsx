@@ -8,7 +8,7 @@ export default function QuickContact() {
   const [form, setForm] = useState({ name: '', phone: '' });
   const [sent, setSent] = useState(false);
 
-  const FORMSUBMIT_ENDPOINT = 'https://formsubmit.co/ajax/contact.iaskk@gmail.com';
+  const FORMSUBMIT_ENDPOINT = 'https://formsubmit.co/ajax/kksingh.iasofficer@gmail.com';
   const WHATSAPP_GROUP_LINK = process.env.NEXT_PUBLIC_WHATSAPP_GROUP_LINK?.trim() || '';
   const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.trim() || '';
   const joinLink = WHATSAPP_GROUP_LINK || (WHATSAPP_NUMBER ? `https://wa.me/${WHATSAPP_NUMBER.replace(/\D/g, '')}` : '');

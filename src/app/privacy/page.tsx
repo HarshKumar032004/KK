@@ -16,7 +16,7 @@ export default function PrivacyPolicy() {
           <p>
             K.K. Singh ("we", "our", or "us") is committed to protecting your personal information and your right to privacy. 
             If you have any questions or concerns about this privacy notice, or our practices with regards to your personal information, 
-            please contact us at contact.iaskk@gmail.com.
+            please contact us at kksingh.iasofficer@gmail.com.
           </p>
 
           <h2 className="text-2xl font-bold text-white mt-10 mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>1. Information We Collect</h2>
@@ -51,7 +51,7 @@ export default function PrivacyPolicy() {
 
           <h2 className="text-2xl font-bold text-white mt-10 mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>4. Contact Us</h2>
           <p>
-            If you have questions or comments about this notice, you may email us at contact.iaskk@gmail.com or call us at +91 82355 14356.
+            If you have questions or comments about this notice, you may email us at kksingh.iasofficer@gmail.com or call us at +91 82355 14356.
           </p>
         </div>
       </div>
