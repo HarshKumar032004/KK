@@ -10,7 +10,7 @@ export default function Footer() {
   const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' });
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
-  const FORMSUBMIT_ENDPOINT = 'https://formsubmit.co/ajax/contact.iaskk@gmail.com';
+  const FORMSUBMIT_ENDPOINT = 'https://formsubmit.co/ajax/kksingh.iasofficer@gmail.com';
   const WHATSAPP_GROUP_LINK = process.env.NEXT_PUBLIC_WHATSAPP_GROUP_LINK?.trim() || '';
   const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.trim() || '';
   const joinLink = WHATSAPP_GROUP_LINK || (WHATSAPP_NUMBER ? `https://wa.me/${WHATSAPP_NUMBER.replace(/\D/g, '')}` : '');
@@ -121,7 +121,7 @@ export default function Footer() {
               </div>
               <div>
                 <div className="text-[10px] md:text-xs tracking-wider uppercase font-semibold" style={{ color: 'var(--text-muted)' }}>Email</div>
-                <div className="text-sm md:text-base font-medium text-white">contact.iaskk@gmail.com</div>
+                <div className="text-sm md:text-base font-medium text-white">kksingh.iasofficer@gmail.com</div>
               </div>
             </div>
             <div className="flex items-center gap-4">

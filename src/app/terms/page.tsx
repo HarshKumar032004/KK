@@ -48,7 +48,7 @@ export default function TermsOfService() {
 
           <h2 className="text-2xl font-bold text-white mt-10 mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>5. Contact Us</h2>
           <p>
-            If you have any questions regarding these terms, please contact us at contact.iaskk@gmail.com.
+            If you have any questions regarding these terms, please contact us at kksingh.iasofficer@gmail.com.
           </p>
         </div>
       </div>
