@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 
 const links = [
   { label: 'Home', href: '#home' },
@@ -29,9 +30,15 @@ export default function Navbar() {
         
         {/* Logo */}
         <a href="#home" className="flex items-center gap-3 style-none group" style={{ textDecoration: 'none' }}>
-          <div className="w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center font-bold text-sm md:text-base transition-transform group-hover:scale-105"
-            style={{ background: 'var(--accent)', color: '#020617', fontFamily: 'Playfair Display, serif' }}>
-            KK
+          <div className="w-8 h-8 md:w-10 md:h-10 rounded-full overflow-hidden flex items-center justify-center transition-transform group-hover:scale-105 bg-transparent">
+            <Image
+              src="/KK Singh Growth Logo.png"
+              alt="KK Singh Logo"
+              width={40}
+              height={40}
+              className="w-full h-full object-contain"
+              priority
+            />
           </div>
           <div className="font-semibold text-lg md:text-xl text-white tracking-wide" style={{ fontFamily: 'Playfair Display, serif' }}>KK Singh</div>
         </a>
