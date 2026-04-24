@@ -3,12 +3,12 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 
 const items = [
-  { label: 'Leadership Summit', image: '/WhatsApp Image 2026-03-30 at 8.15.26 PM (1).jpeg', color: '#1a3a4a' },
-  { label: 'Mentorship Circle', image: '/WhatsApp Image 2026-03-30 at 8.15.27 PM (1).jpeg', color: '#1a2a3a' },
-  { label: 'Youth Mentorship', image: '/WhatsApp Image 2026-03-30 at 8.15.27 PM.jpeg', color: '#1a3a3a' },
-  { label: 'Leadership in Action', image: '/WhatsApp Image 2026-03-30 at 8.18.38 PM.jpeg', color: '#2a2a4a' },
-  { label: 'Achievement Highlights', image: null, color: '#1a4a3a' },
-  { label: 'Mentor Leadership Forum', image: null, color: '#2a3a4a' },
+  { label: '', image: '/WhatsApp Image 2026-03-30 at 8.15.26 PM (1).jpeg', color: '#1a3a4a' },
+  { label: '', image: '/WhatsApp Image 2026-03-30 at 8.15.27 PM (1).jpeg', color: '#1a2a3a' },
+  { label: '', image: '/WhatsApp Image 2026-03-30 at 8.15.27 PM.jpeg', color: '#1a3a3a' },
+  { label: '', image: '/WhatsApp Image 2026-03-30 at 8.18.38 PM.jpeg', color: '#2a2a4a' },
+  { label: '', image: null, color: '#1a4a3a' },
+  { label: '', image: null, color: '#2a3a4a' },
 ];
 
 const containerVariants = {

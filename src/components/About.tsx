@@ -76,8 +76,8 @@ export default function About() {
               <strong style={{ color: 'var(--text-primary)' }}>Jharkhand Cadre </strong> who spent over three decades shaping policy at State and Central Government levels. Known for his transformative approach to governance, he implemented landmark welfare schemes impacting millions.
             </p>
             <p className="leading-relaxed mb-8 text-sm md:text-base text-left" style={{ color: 'var(--text-secondary)' }}>
-              Post-retirement, KK Singh mentors aspiring civil servants,{' '}
-              <strong style={{ color: 'var(--text-primary)' }}>young entrepreneurs</strong>, and corporate leaders — bringing wisdom from decades of experience into boardrooms and classrooms across India.
+              Post-retirement, KK Singh mentors aspiring entrepreneurs,{' '}
+              <strong style={{ color: 'var(--text-primary)' }}>business owners</strong>, and corporate leaders, helping them build clarity, confidence, and sustainable growth across India.
             </p>
 
             <div className="space-y-3 mb-8 text-left">

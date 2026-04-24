@@ -20,8 +20,8 @@ export default function TermsOfService() {
 
           <h2 className="text-2xl font-bold text-white mt-10 mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>1. Mentorship & Advisory Disclaimer</h2>
           <p>
-            The content on this website, including business mentorship, governance advisory, and public speaking materials, is strictly for educational and informational purposes. 
-            K.K. Singh provides guidance based on decades of public administration experience. However, <strong>no specific business outcomes, success metrics, or career guarantees are promised</strong> as a result of engaging in these mentorship programs. 
+            The content on this website, including business mentorship, entrepreneurship guidance, and public speaking materials, is strictly for educational and informational purposes. 
+            K.K. Singh provides guidance based on decades of leadership and mentoring experience. However, <strong>no specific business outcomes, success metrics, or career guarantees are promised</strong> as a result of engaging in these mentorship programs. 
             Users assume full responsibility for their business and life decisions.
           </p>
 

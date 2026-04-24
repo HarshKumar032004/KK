@@ -7,7 +7,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "KK Singh | Retired IAS | Mentor | Entrepreneur",
   description: "KK Singh — Former IAS Officer, Strategic Mentor & Entrepreneur. Empowering leaders and shaping India's future.",
-  keywords: "KK Singh, IAS officer, mentor, entrepreneur, leadership, governance, India",
+  keywords: "KK Singh, IAS officer, mentor, entrepreneur, leadership, business mentorship, India",
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },

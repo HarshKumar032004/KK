@@ -6,7 +6,7 @@ const stats = [
   { icon: Award, value: '30+', label: 'Years in Administrative Service', desc: 'Jharkhand & Central Cadre' },
   { icon: Users, value: '5,000+', label: 'Lives Mentored', desc: 'Across India & abroad' },
   { icon: Globe, value: '8', label: 'States Served', desc: 'Policy implementation' },
-  { icon: TrendingUp, value: '300+', label: 'Talks & Seminars', desc: 'Leadership & governance' },
+  { icon: TrendingUp, value: '300+', label: 'Talks & Seminars', desc: 'Leadership & entrepreneurship' },
 ];
 
 export default function Stats() {
@@ -25,7 +25,7 @@ export default function Stats() {
             >
               <div className="flex justify-center mb-3 md:mb-4">
                 <div className="w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center transition-all bg-white/10 group-hover:bg-white/20 group-hover:scale-110 duration-300">
-                  <s.icon size={20} className="md:w-[24px] md:h-[24px]" style={{ color: 'white' }} />
+                  <s.icon size={20} className="md:w-6 md:h-6" style={{ color: 'white' }} />
                 </div>
               </div>
               <div className="text-3xl md:text-4xl font-bold text-white mb-1.5" style={{ fontFamily: 'Playfair Display, serif' }}>{s.value}</div>

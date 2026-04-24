@@ -64,7 +64,7 @@ export default function Navbar() {
                 key={l.href}
                 href={l.href}
                 onClick={(e) => handleNavClick(e, l.href)}
-                className="text-sm font-medium transition-colors hover:!text-[var(--accent)]"
+                className="text-sm font-medium transition-colors hover:text-(--accent)!"
                 style={{ color: 'var(--text-secondary)', textDecoration: 'none' }}
               >
                 {l.label}
@@ -84,7 +84,7 @@ export default function Navbar() {
         {/* Mobile Toggle */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden p-2 rounded-lg bg-[var(--bg-card)] border border-[var(--border)] text-white hover:text-[var(--accent)] transition-colors"
+          className="md:hidden p-2 rounded-lg bg-(--bg-card) border border-(--border) text-white hover:text-(--accent) transition-colors"
         >
           {mobileOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
@@ -97,7 +97,7 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden glass border-b border-[var(--border)] overflow-hidden absolute top-full left-0 right-0 w-full"
+            className="md:hidden glass border-b border-(--border) overflow-hidden absolute top-full left-0 right-0 w-full"
           >
             <div className="px-5 py-6 flex flex-col gap-5">
               {links.map((l, i) => (
@@ -108,7 +108,7 @@ export default function Navbar() {
                   key={l.href}
                   href={l.href}
                   onClick={(e) => handleNavClick(e, l.href)}
-                  className="text-base font-medium text-[var(--text-secondary)] hover:!text-[var(--accent)] border-b border-[var(--border)] pb-3"
+                  className="text-base font-medium text-(--text-secondary) hover:text-(--accent)! border-b border-(--border) pb-3"
                   style={{ textDecoration: 'none' }}
                 >
                   {l.label}
