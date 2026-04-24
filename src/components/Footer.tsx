@@ -117,13 +117,13 @@ export default function Footer() {
             <span style={{ color: 'var(--accent)' }}>Meaningful.</span>
           </h2>
           <p className="mb-8 md:mb-10 text-sm md:text-base leading-relaxed max-w-md" style={{ color: 'var(--text-secondary)' }}>
-            Whether you&apos;re looking for governance advisory, personal mentorship, or a keynote speaker, I&apos;m always open to discussing new ideas.
+            Whether you&apos;re looking for business mentorship, entrepreneurship guidance, or a keynote speaker, I&apos;m always open to discussing new ideas.
           </p>
 
           <div className="space-y-4 md:space-y-6 mb-8 md:mb-12">
             <div className="flex items-center gap-4">
               <div className="w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center" style={{ background: 'var(--bg-card)', border: '1px solid var(--border)' }}>
-                <Mail size={16} className="md:w-[20px] md:h-[20px]" style={{ color: 'var(--accent)' }} />
+                <Mail size={16} className="md:w-5 md:h-5" style={{ color: 'var(--accent)' }} />
               </div>
               <div>
                 <div className="text-[10px] md:text-xs tracking-wider uppercase font-semibold" style={{ color: 'var(--text-muted)' }}>Email</div>
@@ -132,7 +132,7 @@ export default function Footer() {
             </div>
             <div className="flex items-center gap-4">
               <div className="w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center" style={{ background: 'var(--bg-card)', border: '1px solid var(--border)' }}>
-                <Phone size={16} className="md:w-[20px] md:h-[20px]" style={{ color: 'var(--accent)' }} />
+                <Phone size={16} className="md:w-5 md:h-5" style={{ color: 'var(--accent)' }} />
               </div>
               <div>
                 <div className="text-[10px] md:text-xs tracking-wider uppercase font-semibold" style={{ color: 'var(--text-muted)' }}>Phone</div>
@@ -141,7 +141,7 @@ export default function Footer() {
             </div>
             <div className="flex items-center gap-4">
               <div className="w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center" style={{ background: 'var(--bg-card)', border: '1px solid var(--border)' }}>
-                <MapPin size={16} className="md:w-[20px] md:h-[20px]" style={{ color: 'var(--accent)' }} />
+                <MapPin size={16} className="md:w-5 md:h-5" style={{ color: 'var(--accent)' }} />
               </div>
               <div>
                 <div className="text-[10px] md:text-xs tracking-wider uppercase font-semibold" style={{ color: 'var(--text-muted)' }}>Location</div>
@@ -154,8 +154,8 @@ export default function Footer() {
             <div className="text-[10px] md:text-xs tracking-wider uppercase font-semibold mb-4" style={{ color: 'var(--text-muted)' }}>Follow Me</div>
             <div className="flex gap-3 md:gap-4">
               {socialLinks.map(({ platform, href }) => (
-                <a key={platform} href={href} target="_blank" rel="noopener noreferrer" className="w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all bg-[var(--bg-card)] border border-[var(--border)] text-[var(--text-muted)] hover:!text-[var(--accent)] hover:!bg-teal-500/10 hover:!border-teal-500/40">
-                  <SocialIcon platform={platform} className="w-[18px] h-[18px] md:w-5 md:h-5" />
+                <a key={platform} href={href} target="_blank" rel="noopener noreferrer" className="w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all bg-(--bg-card) border border-(--border) text-(--text-muted) hover:text-(--accent)! hover:bg-teal-500/10! hover:border-teal-500/40!">
+                  <SocialIcon platform={platform} className="w-4.5 h-4.5 md:w-5 md:h-5" />
                 </a>
               ))}
             </div>
@@ -168,7 +168,7 @@ export default function Footer() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="card-dark rounded-2xl p-6 md:p-8 lg:p-10 border border-[var(--border)]"
+          className="card-dark rounded-2xl p-6 md:p-8 lg:p-10 border border-(--border)"
         >
           <h3 className="text-2xl font-bold mb-6 md:mb-8 text-white" style={{ fontFamily: 'Playfair Display, serif' }}>Send a Message</h3>
           <form className="space-y-4 md:space-y-5" onSubmit={handleSubmit}>
@@ -178,7 +178,7 @@ export default function Footer() {
                 <input type="text" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })}
                   maxLength={50}
                   required
-                  className="w-full bg-[var(--bg-surface)] border border-[var(--border)] rounded-lg px-4 py-3 text-sm text-white outline-none focus:border-[var(--accent)] focus:ring-1 focus:ring-[var(--accent)] transition-all"
+                  className="w-full bg-(--bg-surface) border border-(--border) rounded-lg px-4 py-3 text-sm text-white outline-none focus:border-(--accent) focus:ring-1 focus:ring-(--accent) transition-all"
                   placeholder="John Doe" />
               </div>
               <div className="space-y-1.5 md:space-y-2">
@@ -186,7 +186,7 @@ export default function Footer() {
                 <input type="email" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })}
                   maxLength={100}
                   required
-                  className="w-full bg-[var(--bg-surface)] border border-[var(--border)] rounded-lg px-4 py-3 text-sm text-white outline-none focus:border-[var(--accent)] focus:ring-1 focus:ring-[var(--accent)] transition-all"
+                  className="w-full bg-(--bg-surface) border border-(--border) rounded-lg px-4 py-3 text-sm text-white outline-none focus:border-(--accent) focus:ring-1 focus:ring-(--accent) transition-all"
                   placeholder="john@company.com" />
               </div>
             </div>
@@ -202,7 +202,7 @@ export default function Footer() {
                 }}
                 maxLength={16}
                 required
-                className="w-full bg-[var(--bg-surface)] border border-[var(--border)] rounded-lg px-4 py-3 text-sm text-white outline-none focus:border-[var(--accent)] focus:ring-1 focus:ring-[var(--accent)] transition-all"
+                className="w-full bg-(--bg-surface) border border-(--border) rounded-lg px-4 py-3 text-sm text-white outline-none focus:border-(--accent) focus:ring-1 focus:ring-(--accent) transition-all"
                 placeholder="+91XXXXXXXXXX"
               />
             </div>
@@ -211,7 +211,7 @@ export default function Footer() {
               <textarea value={form.message} onChange={e => setForm({ ...form, message: e.target.value })} rows={4}
                 maxLength={500}
                 required
-                className="w-full bg-[var(--bg-surface)] border border-[var(--border)] rounded-lg px-4 py-3 text-sm text-white outline-none focus:border-[var(--accent)] focus:ring-1 focus:ring-[var(--accent)] transition-all resize-none"
+                className="w-full bg-(--bg-surface) border border-(--border) rounded-lg px-4 py-3 text-sm text-white outline-none focus:border-(--accent) focus:ring-1 focus:ring-(--accent) transition-all resize-none"
                 placeholder="How can I help you?" />
             </div>
             <button disabled={sending || sent} type="submit" className="w-full btn-primary justify-center mt-2 group disabled:cursor-not-allowed" style={{ paddingTop: '14px', paddingBottom: '14px', opacity: sending ? 0.7 : 1 }}>
@@ -245,7 +245,7 @@ export default function Footer() {
               { name: 'Terms of Service', href: '/terms' },
               { name: 'Cookie Policy', href: '/cookies' }
             ].map(l => (
-              <Link key={l.name} href={l.href} className="hover:!text-[var(--accent)] transition-colors" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>
+              <Link key={l.name} href={l.href} className="hover:text-(--accent)! transition-colors" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>
                 {l.name}
               </Link>
             ))}

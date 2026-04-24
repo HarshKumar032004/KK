@@ -6,21 +6,21 @@ const programs = [
   {
     icon: Lightbulb,
     title: 'Leadership Mentorship',
-    desc: 'One-on-one sessions for corporate leaders, startup founders, and public sector professionals seeking clarity.',
+    desc: 'One-on-one sessions for corporate leaders, startup founders, and business professionals seeking clarity.',
     tag: 'Most Popular',
     tagColor: 'teal',
   },
   {
     icon: Briefcase,
     title: 'Entrepreneurship Incubation',
-    desc: "From idea to execution — KK Singh's policy expertise helps entrepreneurs navigate regulatory landscapes and scale fast.",
+    desc: "From idea to execution, KK Singh helps entrepreneurs build strategy, execution discipline, and sustainable growth.",
     tag: 'New',
     tagColor: 'gold',
   },
   {
     icon: Heart,
     title: 'Wellness & Mindset Programs',
-    desc: 'Holistic workshops combining governance discipline with modern wellness principles for sustained peak performance.',
+    desc: 'Holistic workshops combining business discipline with modern wellness principles for sustained peak performance.',
     tag: null,
     tagColor: null,
   },
@@ -49,7 +49,7 @@ export default function Programs() {
           <div className="section-tag justify-center">What I Offer</div>
           <h2 className="section-title mb-4">Programs &amp; Services</h2>
           <p className="max-w-2xl mx-auto px-4" style={{ color: 'var(--text-secondary)', fontSize: '1.02rem' }}>
-            Drawing from 30+ years across administration, policy, and leadership — designed to create lasting impact.
+            Drawing from 30+ years of leadership experience and practical mentoring, designed to create lasting impact.
           </p>
         </motion.div>
 
